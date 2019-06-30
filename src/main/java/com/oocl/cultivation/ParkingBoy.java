@@ -17,7 +17,7 @@ public class ParkingBoy {
             }
             return ticket;
         } else {
-            lastErrorMessage = "The parking lot is full.";
+            lastErrorMessage = "Not enough position.";
             return null;
         }
 
