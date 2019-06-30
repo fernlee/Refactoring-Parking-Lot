@@ -19,6 +19,10 @@ public class ParkingBoy {
 
     public Car fetch(ParkingTicket ticket) {
         // TODO: Please implement the method
+        if (ticket == null) {
+            lastErrorMessage = "Please provide your parking ticket.";
+            return null;
+        }
         Car car = parkingLot.findCar(ticket);
         if (car == null) {
             lastErrorMessage = "Unrecognized parking ticket.";

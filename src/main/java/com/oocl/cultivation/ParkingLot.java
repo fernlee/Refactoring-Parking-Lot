@@ -20,7 +20,7 @@ public class ParkingLot {
     }
 
     public Car findCar(ParkingTicket ticket) {
-        return cars.get(ticket);
+        return cars.remove(ticket);
     }
 
     public ParkingLot(int capacity) {
