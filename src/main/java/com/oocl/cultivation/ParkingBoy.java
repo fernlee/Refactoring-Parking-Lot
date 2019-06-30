@@ -10,12 +10,26 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        return parkingLot.addCar(car);
+        ParkingTicket ticket = parkingLot.addCar(car);
+        if (ticket != null) {
+            clearLastErrorMessage();
+        }
+        return ticket;
     }
 
     public Car fetch(ParkingTicket ticket) {
         // TODO: Please implement the method
-        return parkingLot.findCar(ticket);
+        Car car = parkingLot.findCar(ticket);
+        if (car == null) {
+            lastErrorMessage = "Unrecognized parking ticket.";
+        } else {
+            clearLastErrorMessage();
+        }
+        return car;
+    }
+
+    private void clearLastErrorMessage() {
+        lastErrorMessage = null;
     }
 
     public String getLastErrorMessage() {
