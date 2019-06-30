@@ -27,7 +27,8 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
+    // 相减这里是故意写反的吗
     public int getAvailableParkingPosition() {
-        return cars.size() - capacity;
+        return capacity - cars.size();
     }
 }
