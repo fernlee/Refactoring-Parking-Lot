@@ -10,17 +10,21 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        ParkingTicket ticket = parkingLot.addCar(car);
         if (parkingLot.getAvailableParkingPosition() > 0) {
-            if (ticket != null) {
-                clearLastErrorMessage();
-            }
-            return ticket;
+            return getParkingTicket(car);
         } else {
             lastErrorMessage = "Not enough position.";
             return null;
         }
 
+    }
+
+    private ParkingTicket getParkingTicket(Car car) {
+        ParkingTicket ticket = parkingLot.addCar(car);
+        if (ticket != null) {
+            clearLastErrorMessage();
+        }
+        return ticket;
     }
 
     public Car fetch(ParkingTicket ticket) {
