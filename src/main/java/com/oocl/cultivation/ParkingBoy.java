@@ -32,6 +32,10 @@ public class ParkingBoy {
             lastErrorMessage = "Please provide your parking ticket.";
             return null;
         }
+        return getCar(ticket);
+    }
+
+    private Car getCar(ParkingTicket ticket) {
         Car car = parkingLot.findCar(ticket);
         if (car == null) {
             lastErrorMessage = "Unrecognized parking ticket.";
