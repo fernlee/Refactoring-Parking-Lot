@@ -10,13 +10,15 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        if (parkingLot.getAvailableParkingPosition() > 0) {
-            return getParkingTicket(car);
-        } else {
-            lastErrorMessage = "Not enough position.";
-            return null;
+        if (parkingLot.getAvailableParkingPosition() <= 0) {
+            return (ParkingTicket) handleError("Not enough position.");
         }
+        return getParkingTicket(car);
+    }
 
+    private Object handleError(String errorMessage) {
+        lastErrorMessage = errorMessage;
+        return null;
     }
 
     private ParkingTicket getParkingTicket(Car car) {
@@ -29,8 +31,7 @@ public class ParkingBoy {
 
     public Car fetch(ParkingTicket ticket) {
         if (ticket == null) {
-            lastErrorMessage = "Please provide your parking ticket.";
-            return null;
+            return (Car) handleError("Please provide your parking ticket.");
         }
         return getCar(ticket);
     }
